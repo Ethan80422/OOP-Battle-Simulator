@@ -10,10 +10,12 @@ def main():
     hero = Hero("Aragorn")
 
     # Create goblins ༼ ºل͟º ༽ ༼ ºل͟º ༽ ༼ ºل͟º ༽
-    goblins = [Goblin(f"Goblin {i+1}") for i in range(3)]
+    goblins = [Goblin(f"Goblin {i+1}", "black") for i in range(3)]
 
     # Keep track of how many goblins were defeated
     defeated_goblins = 0
+    if(Goblin.is_alive==False):
+        defeated_goblins=defeated_goblins+1
 
     # Battle Loop 
     while hero.is_alive() and any(goblin.is_alive() for goblin in goblins):
