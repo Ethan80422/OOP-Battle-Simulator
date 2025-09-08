@@ -14,7 +14,6 @@ class Hero:
     """
     
     def __init__(self, name):
-        #TODO Set the hero's health. You might give the hero more health than a goblin.
         self.name = name
         self.health = 1000
         self.attack_power = random.randint(150, 300)
@@ -25,4 +24,5 @@ class Hero:
         self.health-= damage
         if(self.health>0):
             self.health=0
+    def is_alive(self):
         return self.health > 0
