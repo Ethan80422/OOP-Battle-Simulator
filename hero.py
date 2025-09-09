@@ -22,7 +22,6 @@ class Hero:
         return self.attack_power
     def receive_damage(self, damage):
         self.health-= damage
-        if(self.health>0):
-            self.health=0
+        
     def is_alive(self):
         return self.health > 0

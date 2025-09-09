@@ -1,6 +1,7 @@
 import random
 from goblin import Goblin
 from hero import Hero
+from boss import dragon
 
 def main():
     print("Welcome to the Battle Arena!")
@@ -14,8 +15,7 @@ def main():
 
     # Keep track of how many goblins were defeated
     defeated_goblins = 0
-    if(Goblin.is_alive==False):
-        defeated_goblins=defeated_goblins+1
+    
 
     # Battle Loop 
     while hero.is_alive() and any(goblin.is_alive() for goblin in goblins):
@@ -25,6 +25,7 @@ def main():
         target_goblin = random.choice([goblin for goblin in goblins if goblin.is_alive()])
         damage = hero.strike()
         print(f"Hero attacks {target_goblin.name} for {damage} damage!")
+        print("heros health is ", hero.health)
         target_goblin.take_damage(damage)
 
         # Check if the target goblin was defeated
@@ -39,9 +40,15 @@ def main():
                 print(f"{goblin.name} attacks hero for {damage} damage!")
                 hero.receive_damage(damage)
 
-    # Determine outcome
     if hero.is_alive():
-        print(f"\nThe hero has defeated all the goblins! ༼ ᕤ◕◡◕ ༽ᕤ")
+        
+        target_dragon=dragon(1)
+        target_dragon.attack()
+        if hero.is_alive():
+            print(f"\nThe hero has defeated all the goblins! and dragon ༼ ᕤ◕◡◕ ༽ᕤ")
+        else:
+            print(f"\nThe hero has been defeated by the dragon. Game Over. (｡•́︿•̀｡)")
+
     else:
         print(f"\nThe hero has been defeated. Game Over. (｡•́︿•̀｡)")
 
